@@ -1,6 +1,7 @@
 package pages;
 
 import driverfactory.Driver;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -38,6 +39,7 @@ public class ContactUsPage {
 
     /*************************************** Assertions ******************************************/
 
+    @Step("checkThatContactUsPageIsLoadedSuccessfully")
     public ContactUsPage checkThatContactUsPageIsLoadedSuccessfully() {
         Assert.assertTrue(driver.browser().getCurrentURL().contains("/contact_us"));
 //        fluentWait.until(ExpectedConditions.textToBe(formTitle, "Get"));
@@ -46,6 +48,7 @@ public class ContactUsPage {
         return this;
     }
 
+    @Step("checkThatFormShouldBeSubmittedSuccessfully")
     public ContactUsPage checkThatFormShouldBeSubmittedSuccessfully() {
 
         Assert.assertEquals(driver.element().getTextOf(successMessage), "Success! Your details have been submitted successfully.");
@@ -54,7 +57,7 @@ public class ContactUsPage {
     }
 
     /*************************************** Actions ******************************************/
-
+@Step("fillInContactUsForm")
     public ContactUsPage fillInContactUsForm(String name, String email, String subject, String message) {
 
         driver.element().fillFiled(nameField, name);
@@ -63,7 +66,7 @@ public class ContactUsPage {
         driver.element().fillFiled(messageField, message);
         return this;
     }
-
+@Step("User click On Submit Button")
     public ContactUsPage clickOnSubmitButton() {
         driver.element().click(submitButton);
        driver.get().switchTo().alert().accept();
@@ -71,7 +74,7 @@ public class ContactUsPage {
         return this;
 
     }
-
+@Step("User click On HomeButton")
     public HomePage clickOnHomeButton() {
         driver.element().click(homeButton);
         return new HomePage(driver);
