@@ -40,12 +40,13 @@ public class ErrorMessageTest {
                 .clickOnLoginLink()
                 .checkThatUserIsNavigatedToLoginSignUpPage()
                 .fillSignUpNamed("Mariam")
-                .fillSignUpEmail("TEST4513009mmn2@gmail.com")
+                .fillSignUpEmail("TEST4513009mmn005@gmail.com")
                 .clickOnSignUpButton()
                 .checkThatRegistrationPageIsLoadedSuccessfully()
                 .fillInRegistrationPage()
                 .clickOnCreateAccountButton()
                 .checkThatSuccessMessageShouldDisplayed();
+
     }
 
 
@@ -63,7 +64,7 @@ public class ErrorMessageTest {
         driver.get().navigate().to("https://automationexercise.com/login");
         new LoginSignUpPage(driver)
                 .fillSignUpNamed("Mariam")
-                .fillSignUpEmail("TEST4513009mmn2@gmail.com")
+                .fillSignUpEmail("TEST4513009mmn005@gmail.com")
                 .clickOnSignUpButton();
 
         new LoginSignUpPage(driver)
