@@ -20,11 +20,11 @@ public class TestCasesTest {
 
     @BeforeClass
     public void setup() {
-        driver = new Driver("CHROME");
+        driver = new Driver();
         browser = new BrowserActions(driver.get());
-        driver.get().manage().window().maximize();
+//        driver.get().manage().window().maximize();
 //        driver.get().navigate().to("https://automationexercise.com/");
-        browser.navigateToURL("https://automationexercise.com/");
+//        browser.navigateToURL("https://automationexercise.com/");
     }
 
     @Test

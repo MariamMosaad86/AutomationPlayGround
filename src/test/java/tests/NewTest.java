@@ -18,7 +18,7 @@ public class NewTest {
     public Driver driver;
 
     WebDriverWait wait;
- //    LoginSignUpPage loginSignUpPage;
+    //    LoginSignUpPage loginSignUpPage;
 //    RegistrationPage registrationPage;
 //    RegistrationSuccessPage successPage;
 //    AccountSuccessfullyDeletion deleteAccount;
@@ -33,11 +33,11 @@ public class NewTest {
 
     @BeforeClass
     public void setUp() {
-        driver = new Driver("CHROME");
+        driver = new Driver();
         wait = new WebDriverWait(driver.get(), Duration.ofSeconds(30));
-        driver.get().manage().window().maximize();
-        driver.get().navigate().to("https://automationexercise.com/");
-       driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+//        driver.get().manage().window().maximize();
+//        driver.get().navigate().to("https://automationexercise.com/");
+        driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
     @Test(priority = 1)
@@ -68,7 +68,7 @@ public class NewTest {
                 .clickOnLoginLink()
                 .checkThatUserIsNavigatedToLoginSignUpPage()
                 .fillSignUpNamed("Mariam")
-                .fillSignUpEmail("TEST4513009mmn5@gmail.com")
+                .fillSignUpEmail("TEST4513009mmn51@gmail.com")
                 .clickOnSignUpButton()
                 .checkThatRegistrationPageIsLoadedSuccessfully()
                 .fillInRegistrationPage()
@@ -86,7 +86,7 @@ public class NewTest {
         driver.browser().navigateToURL("https://automationexercise.com/login");
 
         new LoginSignUpPage(driver)
-                .fillInLoginEmail("TEST4513009mmn5@gmail.com")
+                .fillInLoginEmail("TEST4513009mmn51@gmail.com")
                 .fillLoginPassword("12345678")
                 .clickOnLoginButton()
                 .checkThatTestCasesLinkShouldBeDisplayed()
@@ -117,7 +117,7 @@ public class NewTest {
     public void userCanDeleteAccountSuccessfully() {
         //        deleteAccount=new AccountSuccessfullyDeletion(driver);
         new LoginSignUpPage(driver)
-                .fillInLoginEmail("TEST4513009mmn5@gmail.com")
+                .fillInLoginEmail("TEST4513009mmn51@gmail.com")
                 .fillLoginPassword("12345678")
                 .clickOnLoginButton()
                 .checkThatLogoutLinksShouldBeDisplayed()

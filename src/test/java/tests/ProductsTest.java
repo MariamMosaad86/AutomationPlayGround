@@ -21,9 +21,9 @@ public class ProductsTest {
 
     @BeforeClass
     public void setUp() {
-        driver = new Driver("CHROME");
-        driver.get().manage().window().maximize();
-        driver.browser().navigateToURL("https://automationexercise.com/");
+        driver = new Driver();
+//        driver.get().manage().window().maximize();
+//        driver.browser().navigateToURL("https://automationexercise.com/");
 //        Driver.get().navigate().to("https://automationexercise.com/");
     }
 

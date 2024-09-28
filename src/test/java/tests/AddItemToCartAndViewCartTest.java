@@ -2,6 +2,7 @@ package tests;
 
 import driverfactory.Driver;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -13,12 +14,13 @@ import java.time.Duration;
 
 public class AddItemToCartAndViewCartTest {
     Driver driver;
-
+    WebDriverWait wait;
     @BeforeClass
     public void setUp() {
-        driver = new Driver("CHROME");
-        driver.browser().maximizeWindow();
-        driver.browser().navigateToURL("https://automationexercise.com/");
+        driver = new Driver();
+        wait = new WebDriverWait(driver.get(), Duration.ofSeconds(30));
+//        driver.browser().maximizeWindow();
+//        driver.browser().navigateToURL("https://automationexercise.com/");
 //        driver.browser().ScrollToBottom();
         driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(50));
 
