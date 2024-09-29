@@ -85,6 +85,7 @@ public class NewTest {
 //        driver.get().navigate().to("https://automationexercise.com/login");
         driver.browser().navigateToURL("https://automationexercise.com/login");
 
+
         new LoginSignUpPage(driver)
                 .fillInLoginEmail("TEST4513009mmn51@gmail.com")
                 .fillLoginPassword("12345678")

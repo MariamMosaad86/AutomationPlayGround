@@ -16,8 +16,8 @@ public class TestParallel {
     public void setUp(@Optional("CHROME") String browser) {
         driver = new ThreadLocal<>();
         driver.set(new Driver());
-        driver.get().get().manage().window().maximize();
-        driver.get().get().navigate().to("https://automationexercise.com/");
+//        driver.get().get().manage().window().maximize();
+//        driver.get().get().navigate().to("https://automationexercise.com/");
         driver.get().get().manage().timeouts().implicitlyWait(Duration.ofSeconds(50));
 
     }

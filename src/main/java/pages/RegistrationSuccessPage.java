@@ -1,6 +1,7 @@
 package pages;
 
 import driverfactory.Driver;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -26,6 +27,7 @@ public class RegistrationSuccessPage {
     }
 
     /*************************************** Assertions ******************************************/
+    @Step("check That Success Message Should Displayed")
     public RegistrationSuccessPage checkThatSuccessMessageShouldDisplayed() {
 
 //        wait.until(ExpectedConditions.urlContains("account_created"));

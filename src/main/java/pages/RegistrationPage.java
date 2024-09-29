@@ -1,9 +1,11 @@
 package pages;
 
 import driverfactory.Driver;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 public class RegistrationPage {
     public Driver driver;
@@ -29,6 +31,7 @@ public class RegistrationPage {
 
     /********************************* Assertions *******************************/
 
+    @Step("check That Registration Page Is Loaded Successfully")
     public RegistrationPage checkThatRegistrationPageIsLoadedSuccessfully() {
 //     Assert.assertTrue(driver.get().getCurrentUrl().contains("/signup"));
         Assert.assertTrue(driver.browser().getCurrentURL().contains("/signup"));
@@ -37,6 +40,7 @@ public class RegistrationPage {
     }
 
     /***************************************Actions******************************************/
+    @Step("User can fill In Registration Page")
     public RegistrationPage fillInRegistrationPage() {
         driver.element().fillFiled(password, "12345678");
 
@@ -63,7 +67,7 @@ public class RegistrationPage {
         driver.element().fillFiled(mobileNumber, "01236587412");
         return this;
     }
-
+    @Step("User can click On CreateAccount Button")
     public RegistrationSuccessPage clickOnCreateAccountButton() {
         driver.element().click(createAccountButton);
         return new RegistrationSuccessPage(driver);

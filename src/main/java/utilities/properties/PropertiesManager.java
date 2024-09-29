@@ -29,7 +29,7 @@ public class PropertiesManager {
             ReportConfig.load(reportConfigFile);
 
         } catch (FileNotFoundException e) {
-            System.out.println("Properties file is not found");
+            System.out.println("Property file is not found");
         } catch (IOException e) {
             System.out.println("File isn't readable");
         }

@@ -1,11 +1,13 @@
 package pages;
 
 import driverfactory.Driver;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 public class LoginSignUpPage {
     //    public WebDriver driver;
@@ -24,14 +26,14 @@ public class LoginSignUpPage {
     }
 
     /***************************************Assertions******************************************/
-
+@Step("check That User Is Navigated To LoginSignUp Page")
     public LoginSignUpPage checkThatUserIsNavigatedToLoginSignUpPage() {
 //        Assert.assertTrue(driver.get().getCurrentUrl().contains("/login"));
         Assert.assertTrue(driver.browser().getCurrentURL().contains("/login"));
         Assert.assertEquals(driver.element().getTextOf(signUpFormTitle), "New User Signup!");
         return this;
     }
-
+@Step("check That Error Message Displayed When Enter Exist Email")
     public LoginSignUpPage checkThatErrorMessageDisplayedWhenEnterExistEmail() {
         Assert.assertEquals(driver.element().getTextOf(errorMessage), "Email Address already exist!");
         return this;
@@ -39,31 +41,32 @@ public class LoginSignUpPage {
 
 
     /***************************************Actions******************************************/
+    @Step("User can fill In Login Email")
     public LoginSignUpPage fillInLoginEmail(String email) {
         driver.element().fillFiled(loginEmail, email);
         return this;
     }
-
+@Step("User can fill In Login Email")
     public LoginSignUpPage fillLoginPassword(String password) {
         driver.element().fillFiled(loginPassword, password);
         return this;
     }
-
+@Step("User can click On Login Button")
     public HomePage clickOnLoginButton() {
         driver.element().click(loginButton);
         return new HomePage(driver);
     }
-
+@Step("User can fill SignUp Named")
     public LoginSignUpPage fillSignUpNamed(String name) {
         driver.element().fillFiled(signupName,name);
         return this;
     }
-
+@Step("User can fill SignUp Email")
     public LoginSignUpPage fillSignUpEmail(String email) {
         driver.element().fillFiled(SignupEmail, email);
         return this;
     }
-
+@Step("click On SignUp Button")
     public RegistrationPage clickOnSignUpButton() {
         driver.element().click(signUpButton);
         return new RegistrationPage(driver);

@@ -35,6 +35,7 @@ public class Driver {
         if (!WebConfig.getProperty("BaseURL").isEmpty()) {
             driver.get().navigate().to(WebConfig.getProperty("BaseURL"));
         }
+
    }
 
     private DriverAbstract getDriver(String driver) {
