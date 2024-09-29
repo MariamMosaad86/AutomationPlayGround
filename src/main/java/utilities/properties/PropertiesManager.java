@@ -9,7 +9,7 @@ public class PropertiesManager {
 
     public static Properties WebConfig;
 
-public static Properties ReportConfig;
+    public static Properties ReportConfig;
 
 
     public PropertiesManager() {
@@ -17,13 +17,13 @@ public static Properties ReportConfig;
 
     public static void initializeProperties() {
         FileInputStream webConfigFile = null;
-        FileInputStream reportConfigFile=null;
+        FileInputStream reportConfigFile = null;
         try {
             webConfigFile = new FileInputStream("src/main/resources/WebConfigurations.properties");
-            reportConfigFile=new FileInputStream("src/main/resources/Reporting.properties");
+            reportConfigFile = new FileInputStream("src/main/resources/Reporting.properties");
 
             WebConfig = new Properties();
-            ReportConfig=new Properties();
+            ReportConfig = new Properties();
 
             WebConfig.load(webConfigFile);
             ReportConfig.load(reportConfigFile);
@@ -33,6 +33,5 @@ public static Properties ReportConfig;
         } catch (IOException e) {
             System.out.println("File isn't readable");
         }
-
     }
 }

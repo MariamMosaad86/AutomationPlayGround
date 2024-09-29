@@ -15,21 +15,9 @@ public class ChromeDriverFactory extends DriverAbstract {
         ChromeOptions options = new ChromeOptions();
         if(WebConfig.getProperty("HeadlessMode").equalsIgnoreCase("true")) {
             options.addArguments("--headless");
-            System.out.println("Starting browser with Headless Mode");
+            System.out.println("Starting browser with Headless mode");
         }
         driver = new ChromeDriver(options);
         return driver;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-

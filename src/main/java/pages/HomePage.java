@@ -26,6 +26,7 @@ public class HomePage {
     By productTitle = By.xpath("(//h2[\"title text-center\"])[6]");
 
 
+
     public HomePage(Driver driver) {
         this.driver = driver;
     }
@@ -121,4 +122,5 @@ public class HomePage {
         driver.element().click(clickOnViewCart);
         return new ViewCartPage(driver);
     }
+
 }
