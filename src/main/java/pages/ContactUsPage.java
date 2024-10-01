@@ -57,7 +57,7 @@ public class ContactUsPage {
     }
 
     /*************************************** Actions ******************************************/
-@Step("fillInContactUsForm")
+@Step("User can fill In ContactUs Form")
     public ContactUsPage fillInContactUsForm(String name, String email, String subject, String message) {
 
         driver.element().fillFiled(nameField, name);

@@ -23,7 +23,6 @@ if (ReportConfig.getProperty("CleanAllureReport").equalsIgnoreCase("true")){
     System.out.println("Allure Report Cleaned Successfully");
 }
     }
-
     @Override
     public void onExecutionFinish() {
         System.out.println("Generating Report........");

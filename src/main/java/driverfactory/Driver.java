@@ -18,7 +18,7 @@ public class Driver {
 //        driver=new EventFiringDecorator<>(org.openqa.selenium.WebDriver.class,
 //                new WebDriverListener(undecoratedDriver))
 //                .decorate(undecoratedDriver);
-    private ThreadLocal<WebDriver> driver;
+    public ThreadLocal<WebDriver> driver;
 
     public Driver() {
         String driverType =WebConfig.getProperty("BrowserType");

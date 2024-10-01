@@ -13,11 +13,11 @@ public class TestParallel {
 
     @BeforeClass
     @Parameters(value = {"browserName"})
-    public void setUp(@Optional("CHROME") String browser) {
+    public void setUp(@Optional("CHROME") String browserName) {
         driver = new ThreadLocal<>();
         driver.set(new Driver());
-//        driver.get().get().manage().window().maximize();
-//        driver.get().get().navigate().to("https://automationexercise.com/");
+        driver.get().get().manage().window().maximize();
+        driver.get().get().navigate().to("https://automationexercise.com/");
         driver.get().get().manage().timeouts().implicitlyWait(Duration.ofSeconds(50));
 
     }
