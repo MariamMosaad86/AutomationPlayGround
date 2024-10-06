@@ -32,7 +32,8 @@ public class ContactUsPage {
         this.driver = driver;
         wait = new WebDriverWait(driver.get(), Duration.ofSeconds(30));
 
-        fluentWait = new FluentWait<>(driver).withTimeout(Duration.ofSeconds(30))
+        fluentWait = new FluentWait<>(driver)
+                .withTimeout(Duration.ofSeconds(30))
                 .pollingEvery(Duration.ofSeconds(10))
                 .ignoring(NoSuchElementException.class);
     }

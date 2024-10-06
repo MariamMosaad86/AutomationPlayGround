@@ -82,7 +82,9 @@ public class WebDriverListener implements org.openqa.selenium.support.events.Web
                     .until(ExpectedConditions.visibilityOfElementLocated(locator));
         } catch (org.openqa.selenium.TimeoutException timeoutException) {
             // In case the element was not found / not visible and the timeout expired
-            System.out.println(timeoutException.getMessage() + " || " + timeoutException.getCause().getMessage().substring(0, timeoutException.getCause().getMessage().indexOf("\n")));
+            System.out.println(timeoutException.getMessage() + " || "
+                    + timeoutException.getCause()
+                    .getMessage().substring(0, timeoutException.getCause().getMessage().indexOf("\n")));
             throw timeoutException;
         }
 

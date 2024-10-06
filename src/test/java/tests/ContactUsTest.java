@@ -2,6 +2,7 @@ package tests;
 
 import driverfactory.Driver;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 import pages.HomePage;
 
@@ -10,13 +11,14 @@ import java.time.Duration;
 public class ContactUsTest {
 
     public Driver driver;
-    ThreadLocal<Driver> parallelDriver;
+
+    WebDriverWait wait;
 
     @BeforeClass
     @Parameters(value = {"browserName"})
     public void setUp(@Optional("EDGE") String browserName) {
         driver = new Driver();
-//        driver.get().manage().window().maximize();
+ //        driver.get().manage().window().maximize();
 //        driver.get().navigate().to("https://automationexercise.com/");
         driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(50));
 
@@ -29,7 +31,8 @@ public class ContactUsTest {
 //                .click(By.xpath("(//a[@class=\"btn btn-default add-to-cart\"])[1]"));
 //        Thread.sleep(5000);
 
-        new HomePage(driver).checkThatUserShouldBeNavigatedToHomePageSuccessfully()
+        new HomePage(driver)
+                .checkThatUserShouldBeNavigatedToHomePageSuccessfully()
                 .clickOnContactUsLink()
                 .checkThatContactUsPageIsLoadedSuccessfully()
                 .fillInContactUsForm("Mohammed", "test12345@gmail.com", "Test", "Welcome")

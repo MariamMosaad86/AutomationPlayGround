@@ -2,16 +2,19 @@ package listeners.testng;
 
 import driverfactory.Driver;
 import org.testng.*;
+import org.testng.xml.XmlSuite;
 import utilities.AllureReportHelper;
 import utilities.ScreenShotManager;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.util.List;
+import java.util.Properties;
 
 import static utilities.properties.PropertiesManager.ReportConfig;
 import static utilities.properties.PropertiesManager.initializeProperties;
 
-public class TestNGListener implements ITestListener, IExecutionListener {
+public class TestNGListener implements ITestListener, IExecutionListener ,IAlterSuiteListener {
 
     @Override
     public void onExecutionStart() {
@@ -85,4 +88,12 @@ if (ReportConfig.getProperty("CleanAllureReport").equalsIgnoreCase("true")){
 
     }
 
+
+
 }
+
+
+
+
+
+

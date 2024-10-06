@@ -37,7 +37,6 @@ public class NewTest {
         wait = new WebDriverWait(driver.get(), Duration.ofSeconds(30));
 //        driver.get().manage().window().maximize();
 //        driver.get().navigate().to("https://automationexercise.com/");
-        driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
     @Test(priority = 1)
@@ -68,7 +67,7 @@ public class NewTest {
                 .clickOnLoginLink()
                 .checkThatUserIsNavigatedToLoginSignUpPage()
                 .fillSignUpNamed("Mariam")
-                .fillSignUpEmail("TEST4513009mmn51@gmail.com")
+                .fillSignUpEmail("TEST45130095mmn51@gmail.com")
                 .clickOnSignUpButton()
                 .checkThatRegistrationPageIsLoadedSuccessfully()
                 .fillInRegistrationPage()
@@ -87,7 +86,7 @@ public class NewTest {
 
 
         new LoginSignUpPage(driver)
-                .fillInLoginEmail("TEST4513009mmn51@gmail.com")
+                .fillInLoginEmail("TEST45130095mmn51@gmail.com")
                 .fillLoginPassword("12345678")
                 .clickOnLoginButton()
                 .checkThatTestCasesLinkShouldBeDisplayed()
@@ -118,7 +117,7 @@ public class NewTest {
     public void userCanDeleteAccountSuccessfully() {
         //        deleteAccount=new AccountSuccessfullyDeletion(driver);
         new LoginSignUpPage(driver)
-                .fillInLoginEmail("TEST4513009mmn51@gmail.com")
+                .fillInLoginEmail("TEST45130095mmn51@gmail.com")
                 .fillLoginPassword("12345678")
                 .clickOnLoginButton()
                 .checkThatLogoutLinksShouldBeDisplayed()

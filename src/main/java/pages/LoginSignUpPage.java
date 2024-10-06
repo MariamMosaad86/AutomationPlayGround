@@ -28,7 +28,6 @@ public class LoginSignUpPage {
     /***************************************Assertions******************************************/
 @Step("check That User Is Navigated To LoginSignUp Page")
     public LoginSignUpPage checkThatUserIsNavigatedToLoginSignUpPage() {
-//        Assert.assertTrue(driver.get().getCurrentUrl().contains("/login"));
         Assert.assertTrue(driver.browser().getCurrentURL().contains("/login"));
         Assert.assertEquals(driver.element().getTextOf(signUpFormTitle), "New User Signup!");
         return this;

@@ -2,6 +2,7 @@ package tests;
 
 import driverfactory.Driver;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 import pages.HomePage;
 
@@ -10,14 +11,16 @@ import java.time.Duration;
 public class TestParallel {
 
     public ThreadLocal<Driver> driver;
+    WebDriverWait wait;
+
 
     @BeforeClass
     @Parameters(value = {"browserName"})
     public void setUp(@Optional("CHROME") String browserName) {
         driver = new ThreadLocal<>();
-        driver.set(new Driver());
-        driver.get().get().manage().window().maximize();
-        driver.get().get().navigate().to("https://automationexercise.com/");
+        driver.set(new Driver(browserName));
+//        driver.get().get().manage().window().maximize();
+//        driver.get().get().navigate().to("https://automationexercise.com/");
         driver.get().get().manage().timeouts().implicitlyWait(Duration.ofSeconds(50));
 
     }
