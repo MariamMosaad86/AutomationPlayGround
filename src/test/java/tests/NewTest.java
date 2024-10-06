@@ -67,7 +67,7 @@ public class NewTest {
                 .clickOnLoginLink()
                 .checkThatUserIsNavigatedToLoginSignUpPage()
                 .fillSignUpNamed("Mariam")
-                .fillSignUpEmail("TEST45130095mmn51@gmail.com")
+                .fillSignUpEmail("TEST45130095mmn501@gmail.com")
                 .clickOnSignUpButton()
                 .checkThatRegistrationPageIsLoadedSuccessfully()
                 .fillInRegistrationPage()
@@ -86,7 +86,7 @@ public class NewTest {
 
 
         new LoginSignUpPage(driver)
-                .fillInLoginEmail("TEST45130095mmn51@gmail.com")
+                .fillInLoginEmail("TEST45130095mmn501@gmail.com")
                 .fillLoginPassword("12345678")
                 .clickOnLoginButton()
                 .checkThatTestCasesLinkShouldBeDisplayed()
@@ -117,7 +117,7 @@ public class NewTest {
     public void userCanDeleteAccountSuccessfully() {
         //        deleteAccount=new AccountSuccessfullyDeletion(driver);
         new LoginSignUpPage(driver)
-                .fillInLoginEmail("TEST45130095mmn51@gmail.com")
+                .fillInLoginEmail("TEST45130095mmn501@gmail.com")
                 .fillLoginPassword("12345678")
                 .clickOnLoginButton()
                 .checkThatLogoutLinksShouldBeDisplayed()
