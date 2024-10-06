@@ -11,7 +11,7 @@ This Framework is based on Selenium WebDrive with Java to automate UI scenarios
 - Allure Report
 
 ### Automation Framework Structure:
--This framework is structured as follows:
+- This framework is structured as follows:
  - in Main Folder
   - Driver Factory
   - Browser Actions
