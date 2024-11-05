@@ -11,8 +11,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-import static java.awt.SystemColor.text;
-
 public class ElementActions {
     private WebDriver driver;
     private WebDriverWait wait;
@@ -40,16 +38,24 @@ public class ElementActions {
         return this;
     }
 
-    public ElementActions fillFiled(By locator, String text) {
+    public ElementActions fillField(By locator, String text) {
         clearField(locator);
         System.out.println("Fill field: " + locator.toString() + "with:" + text);
         driver.findElement(locator).sendKeys(text);
         return this;
     }
 
+
     public ElementActions clearField(By locator) {
         System.out.println("Clear field with locator : " + locator.toString());
         driver.findElement(locator).clear();
+        return this;
+    }
+
+    public ElementActions searchBar(By locator, String text) {
+        clearField(locator);
+        System.out.println("Type \"" + text + "\" into " + "\" Search Product\".");
+        driver.findElement(locator).sendKeys(text);
         return this;
     }
 

@@ -1,28 +1,26 @@
 package pages;
 
+
 import driverfactory.Driver;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 public class TestCasePage {
-    public Driver driver;
+    private Driver driver;
 
-
-    By testTitle=By.cssSelector("h2.title.text-center");
+    By testCaseTitle=By.xpath("//h2[@class=\"title text-center\"]/b");
 
     public TestCasePage(Driver driver) {
         this.driver = driver;
     }
 
-    /*************************************** Assertions ******************************************/
-public TestCasePage checkThatUserIsNavigatedToTestCasesPageSuccessFully(){
-//    Assert.assertTrue(driver.get().getCurrentUrl().contains("/test_cases"));
-    Assert.assertTrue(driver.browser().getCurrentURL().contains("/test_cases"));
-    Assert.assertTrue(driver.get().findElement(testTitle).getText().contains("CASES"));
-    return this;
-}
-    /*************************************** Actions ******************************************/
+    /*********************************  Assertions  *****************************************************/
 
-
+    @Step("check that Test Case Page is loaded successfully")
+    public void checkThatTestCasePageIsLoadedSuccessfully(){
+        Assert.assertTrue(driver.browser().getCurrentURL().contains("/test_cases"));
+        Assert.assertTrue(driver.element().isDisplayed(testCaseTitle));
+//        Assert.assertEquals(driver.element().getTextOf(testCaseTitle),"TEST CASES");
+    }
 }

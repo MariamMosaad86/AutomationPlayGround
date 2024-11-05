@@ -34,6 +34,10 @@ public class BrowserActions {
         return driver.getCurrentUrl();
     }
 
+    public String getCurrentURLTitle(){
+        return driver.getTitle();
+    }
+
     public BrowserActions navigateForward() {
         driver.navigate().forward();
         return this;
@@ -113,6 +117,16 @@ public class BrowserActions {
 
     public BrowserActions dismissSwitchAlert() {
         driver.switchTo().alert().dismiss();
+        return this;
+    }
+
+    public BrowserActions scrollToBottom() {
+        new Actions(driver).scrollByAmount(0, 10000).build().perform();
+        return this;
+    }
+
+    public BrowserActions scrollToTop() {
+        new Actions(driver).scrollByAmount(0, -10000).build().perform();
         return this;
     }
 

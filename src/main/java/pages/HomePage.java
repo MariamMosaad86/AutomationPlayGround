@@ -3,27 +3,42 @@ package pages;
 import driverfactory.Driver;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
-import java.time.Duration;
-
 public class HomePage {
-    //    public WebDriver driver;
-    public Driver driver;
-    By loginLink = By.xpath("//a[@href=\"/login\"]");
+
+    private Driver driver;
+
+
     By logoutLink = By.xpath("//a[@href=\"/logout\"]");
+    By loginLink = By.xpath("//a[@href=\"/login\"]");
     By deleteAccountLink = By.xpath("//a[@href=\"/delete_account\"]");
-    By contactusLink = By.xpath("//a[@href=\"/contact_us\"]");
-    By testCaseLink = By.xpath("//a[@href=\"/test_cases\"]");
+    By contactUsLink = By.xpath("//a[@href=\"/contact_us\"]");
+    By testCaseLink = By.xpath("(//a[@href=\"/test_cases\"])[1]");
     By productsLink = By.xpath("//a[@href=\"/products\"]");
-    By clickOnContinueButton = By.xpath("//button[@class=\"btn btn-success close-modal btn-block\"]");
-    By clickOnViewCart = By.xpath("(//a[@href=\"/view_cart\"])[2]");
+    By hoverOnFirstProductLink = By.xpath("(//div[@class=\"overlay-content\"])[1]");
+    By clickOnFirstProductAddToCartButton = By.xpath("(//a[@class=\"btn btn-default add-to-cart\"])[1]");
+    By viewCart = By.xpath("(//a[@href=\"/view_cart\"])[2]");
+    By subscriptionTitle = By.xpath("//div[@class=\"single-widget\"]/h2");
+    By emailField = By.id("susbscribe_email");
+    By submitEmailButton = By.id("subscribe");
+    By SuccessMessage = By.id("success-subscribe");
+    By footer = By.id("footer");
+    By viewProduct = By.xpath("//a[@href=\"/product_details/1\"]");
+    By loggedInAsUser = By.xpath("//b");
+    By cartLink = By.xpath("(//a[@href=\"/view_cart\"])[1]");
+    By signupLoginBtn = By.xpath("//a[@href=\"/login\"]");
+    By leftSideBar = By.xpath("(//h2)[4]");
+    By womenCategory = By.xpath("//*[@id=\"accordian\"]/div[1]/div[1]/h4/a");
+    By topsWomenCategory = By.xpath("//*[@id=\"Women\"]/div/ul/li[2]/a");
 
-
-    By hoverOnFirstItem = By.xpath("(//div[@class=\"overlay-content\"])[1]");
-    By clickAddToCartButton = By.xpath("(//a[@class=\"btn btn-default add-to-cart\"])[1]");
-    By productTitle = By.xpath("(//h2[\"title text-center\"])[6]");
+    By continueShopping = By.cssSelector("button.close-modal");
+    By scrollUpArrow = By.xpath("//a[@href=\"#top\"]");
+    By fullFledgedText = By.xpath("(//div[@class=\"col-sm-6\"])[3]/h2");
+    By recommendedItemsTitle = By.xpath("//div[@class=\"recommended_items\"]/h2");
+    By AddToCartBtnInRecommendedItems = By.cssSelector("#recommended-item-carousel > div > div.item.active > div:nth-child(2) > div > div > div > a");
+    By ViewCartBtnInRecommendedItems = By.xpath("//a[@href=\"/view_cart\"]/u");
+    By cart = By.xpath("//*[@id=\"header\"]/div/div/div/div[2]/div/ul/li[3]/a");
 
 
 
@@ -31,96 +46,209 @@ public class HomePage {
         this.driver = driver;
     }
 
-    /*************************************** Assertions ******************************************/
-@Step("checkThatLogoutLinksShouldBeDisplayed")
-    public HomePage checkThatLogoutLinksShouldBeDisplayed() {
+    /*********************************  Assertions  *****************************************************/
+
+    @Step("Check that Logout link should be displayed")
+    public HomePage checkThatLogOutLinkShouldBeDisplayed() {
         Assert.assertTrue(driver.element().isDisplayed(logoutLink));
         return this;
     }
-@Step("checkThatLoginLinkShouldBeDisplayed")
+
+    @Step("Check that Login Delete link should be displayed")
+    public HomePage checkThatDeleteLinkShouldBeDisplayed() {
+        Assert.assertTrue(driver.element().isDisplayed(deleteAccountLink));
+        return this;
+    }
+
+    @Step("Check that Login link should be displayed")
     public HomePage checkThatLoginLinkShouldBeDisplayed() {
         Assert.assertTrue(driver.element().isDisplayed(loginLink));
         return this;
     }
 
-@Step("checkThatDeleteAccountLinkShouldBeDisplayed")
-    public HomePage checkThatDeleteAccountLinkShouldBeDisplayed() {
-        Assert.assertTrue(driver.element().isDisplayed(deleteAccountLink));
-        return this;
-    }
-    @Step("check That User Should Be Navigated To HomePage Successfully")
-    public HomePage checkThatUserShouldBeNavigatedToHomePageSuccessfully() {
-//        Assert.assertEquals(driver.get().getCurrentUrl(), "https://automationexercise.com/");
+    @Step("Check that Home Page is loaded successfully")
+    public HomePage checkThatHomePageIsLoadedSuccessfully() {
         Assert.assertEquals(driver.browser().getCurrentURL(), "https://automationexercise.com/");
-
-        return this;
-    }
-@Step("check That Test Cases Link Should Be Displayed")
-    public HomePage checkThatTestCasesLinkShouldBeDisplayed() {
-        Assert.assertTrue(driver.element().isDisplayed(testCaseLink));
         return this;
     }
 
-   @Step("check That Feature Item Should Be Displayed")
-    // New 14/9/2024
-    public HomePage checkThatFeatureItemShouldBeDisplayed() {
-        Assert.assertEquals(driver.element().getTextOf(productTitle), "FEATURES ITEMS");
+    @Step("check that subscription is visible")
+    public HomePage checkThatSubscriptionIsVisible() {
+        driver.element().scrollToElement(footer);
+        Assert.assertTrue(driver.element().isDisplayed(subscriptionTitle));
         return this;
     }
 
-    /*************************************** Actions ******************************************/
-@Step("User clicks On LoginLink")
-    public LoginSignUpPage clickOnLoginLink() {
+
+    @Step("Check that success message is displayed successfully")
+    public HomePage checkThatSuccessMessageDisplayedSuccessfully() {
+        Assert.assertEquals(driver.element().getTextOf(SuccessMessage), "You have been successfully subscribed!");
+        return this;
+    }
+
+    @Step("Check that logged in as username is displayed")
+    public HomePage checkThatLoggedInAsUsernameIsDisplayed(String userName) {
+        Assert.assertTrue(driver.element().isDisplayed(loggedInAsUser));
+        return this;
+    }
+
+    @Step("Check that categories are visible on left side bar")
+    public HomePage checkThatCategoriesAreVisibleOnLeftSideBar() {
+        Assert.assertEquals(driver.element().getTextOf(leftSideBar), "CATEGORY");
+        return this;
+    }
+
+    @Step("check that the page is scrolled up successfully")
+    public HomePage checkThatThePageIsScrolledUpSuccessfully(){
+        Assert.assertTrue(driver.element().isDisplayed(fullFledgedText));
+        return this;
+    }
+
+    @Step("check that recommended items title is displayed")
+    public HomePage checkThatRecommendedItemsTitleIsDisplayed() {
+        Assert.assertEquals(driver.element().getTextOf(recommendedItemsTitle), "RECOMMENDED ITEMS");
+        return this;
+    }
+
+    public HomePage checkThatCurrentPageTitleIsVisible(){
+        Assert.assertEquals(driver.browser().getCurrentURLTitle(),"Automation Exercise");
+        return this;
+    }
+
+    /*********************************  Actions  *****************************************************/
+
+    @Step("Check that user can click on Cart button")
+    public ViewCartPage clickOnCartButton() {
+        driver.element().click(cart);
+        return new ViewCartPage(driver);
+    }
+    @Step("Check that user can click on login link")
+    public LoginSignupPage clickOnLoginLink() {
         driver.element().click(loginLink);
-        return new LoginSignUpPage(driver);
+        return new LoginSignupPage(driver);
     }
-@Step("User clicks On Logout Link")
-    public LoginSignUpPage clickOnLogoutLink() {
+
+    @Step("Check that user can click on logout link")
+    public LoginSignupPage clickOnLogOutLink() {
         driver.element().click(logoutLink);
-        return new LoginSignUpPage(driver);
+        return new LoginSignupPage(driver);
     }
-@Step("User clicks On Delete Account Link")
-    public AccountSuccessfullyDeletion clickOnDeleteAccountLink() {
+
+    @Step("Check that user can click on Delete Account link")
+    public AccountSuccessfulDeletion clickOnDeleteAccountLink() {
         driver.element().click(deleteAccountLink);
-        return new AccountSuccessfullyDeletion(driver);
+        return new AccountSuccessfulDeletion(driver);
     }
-@Step("User clicks On ContactUs Link")
+
+    @Step("Check that user can click on ContactUs link")
     public ContactUsPage clickOnContactUsLink() {
-        driver.element().click(contactusLink);
+        driver.element().click(contactUsLink);
         return new ContactUsPage(driver);
     }
-@Step("User clicks On TestCase Link")
+
+    @Step("Check that user can click on Test Case link")
     public TestCasePage clickOnTestCaseLink() {
         driver.element().click(testCaseLink);
         return new TestCasePage(driver);
     }
-@Step("User clicks On Products Link")
+
+    @Step("Check that user can click on Products link")
     public ProductsPage clickOnProductsLink() {
         driver.element().click(productsLink);
         return new ProductsPage(driver);
     }
-@Step("hover On FirstProduct")
-    //NEW 14/9/2024
-    public HomePage hoverOnFirstProduct() {
-        driver.element().hoverOnItem(hoverOnFirstItem);
-        return this;
-    }
-@Step("User clicks On First Item")
-    public HomePage clickOnFirstItem() {
-//        driver.element().explicitWaitForElementToBeClickable(clickAddToCartButton, 30);
-        driver.element().click(clickAddToCartButton);
-        return this;
-    }
-@Step("User clicks On Continue")
-    public HomePage clickOnContinue() {
-        driver.element().click(clickOnContinueButton);
+
+    @Step("Check that user can hover On first item")
+    public HomePage hoverOnFirstItem() {
+        driver.element().hoverOnItem(hoverOnFirstProductLink);
         return this;
     }
 
-    @Step("User clicks On ViewCart")
-    public ViewCartPage clickOnViewCart() {
-        driver.element().click(clickOnViewCart);
+    @Step("Check that user can click On first add to Cart button")
+    public HomePage clickOnFirstAddToCartButton() {
+        driver.element().click(clickOnFirstProductAddToCartButton);
+        return this;
+    }
+
+    @Step("Check that user can click On View Cart button")
+    public ViewCartPage clickOnViewCartButton() {
+        driver.element().click(viewCart);
         return new ViewCartPage(driver);
     }
 
+    @Step("Check that user can fill Email field")
+    public HomePage fillEmailField(String email) {
+        driver.element().fillField(emailField, email);
+        return this;
+    }
+
+    @Step("Check that user can click on email subscription button")
+    public HomePage clickOnEmailSubscriptionButton() {
+        driver.element().click(submitEmailButton);
+        return this;
+    }
+
+    @Step("Check that user can click on view product button")
+    public FirstProductPage clickOnViewProductButton() {
+        driver.element().click(viewProduct);
+        return new FirstProductPage(driver);
+    }
+
+    @Step("Check that user can click on Cart Link")
+    public ViewCartPage clickOnCartLink() {
+        driver.element().click(cartLink);
+        return new ViewCartPage(driver);
+    }
+    @Step("Check that user can click on login signup button")
+    public LoginSignupPage clickOnLoginSignupBtn() {
+        driver.element().click(signupLoginBtn);
+        return new LoginSignupPage(driver);
+    }
+
+    @Step("Check that user can click on Women category")
+    public HomePage clickOnWomenCategory() {
+        driver.element().click(womenCategory);
+        return this;
+    }
+
+    @Step("Check that user can click on Tops Women category")
+    public WomenProductPage clickOnTopsWomenCategory() {
+        driver.element().click(topsWomenCategory);
+        return new WomenProductPage(driver);
+    }
+
+    @Step("Check that user can click on continue shopping button")
+    public HomePage clickOnContinueShoppingButton(){
+        driver.element().click(continueShopping);
+        return this;
+    }
+
+    @Step("Check that user can scroll down to bottom")
+    public HomePage scrollDownToBottom(){
+        driver.browser().scrollToBottom();
+        return this;
+    }
+    @Step("Check that user can scroll up to top without arrow")
+    public HomePage scrollUpToTopWithoutArrow(){
+        driver.browser().scrollToTop();
+        return this;
+    }
+
+    @Step("Check that user can scroll up to top with arrow")
+    public HomePage scrollUpToTopWithArrow(){
+        driver.element().click(scrollUpArrow);
+        return this;
+    }
+
+    @Step("Check that user can click on add to Cart button in recommended items")
+    public HomePage clickOnAddToCartBtnInRecommendedItems(){
+        driver.element().click(AddToCartBtnInRecommendedItems);
+        return this;
+    }
+
+    @Step("Check that user can click on view Cart button in recommended items")
+    public ViewCartPage clickOnViewCartBtnInRecommendedItems(){
+        driver.element().click(ViewCartBtnInRecommendedItems);
+        return new ViewCartPage(driver);
+    }
 }
