@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class ElementActions {
+
     private WebDriver driver;
     private WebDriverWait wait;
 

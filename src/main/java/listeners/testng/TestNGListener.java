@@ -74,7 +74,7 @@ if (ReportConfig.getProperty("CleanAllureReport").equalsIgnoreCase("true")){
             System.out.println("Unable to get field,Field should be public");
         }
         assert driver != null;
-        ScreenShotManager.captureScreenshot(driver.get(), result.getName());
+        ScreenShotManager.CaptureScreenShot(driver.get(), result.getName());
 
 //      try {
 //        driver=(Driver) result.getTestClass().getRealClass().getDeclaredField("driver").get(result.getInstance()), result.getName();

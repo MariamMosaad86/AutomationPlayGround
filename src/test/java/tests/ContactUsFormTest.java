@@ -34,7 +34,7 @@ public class ContactUsFormTest {
                 .checkThatFormShouldBeSubmittedSuccessfully()
                 .clickOnHomeButton()
                 .checkThatHomePageIsLoadedSuccessfully();
-        ScreenShotManager.captureScreenshot(driver.get().get(), "ContactUs");
+        ScreenShotManager.CaptureScreenShot(driver.get().get(), "ContactUs");
 
 
     }
