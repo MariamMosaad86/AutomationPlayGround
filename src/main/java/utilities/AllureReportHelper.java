@@ -7,8 +7,7 @@ import java.io.IOException;
 
 public class AllureReportHelper {
 
-    private AllureReportHelper(){
-
+    private AllureReportHelper() {
     }
 
     public static void cleanAllureReport(){

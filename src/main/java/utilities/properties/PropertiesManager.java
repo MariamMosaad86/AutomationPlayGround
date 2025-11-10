@@ -15,23 +15,24 @@ public class PropertiesManager {
     public PropertiesManager() {
     }
 
-    public static void initializeProperties() {
-        FileInputStream webConfigFile = null;
-        FileInputStream reportConfigFile = null;
+    public static void initializeProperties(){
+        FileInputStream webConfigFile=null;
+        FileInputStream reportConfigFile=null;
         try {
-            webConfigFile = new FileInputStream("src/main/resources/WebConfigurations.properties");
-            reportConfigFile = new FileInputStream("src/main/resources/Reporting.properties");
+             webConfigFile=new FileInputStream("src/main/resources/WebConfigurations.properties");
+             reportConfigFile=new FileInputStream("src/main/resources/Reporting.properties");
 
-            WebConfig = new Properties();
-            ReportConfig = new Properties();
+            WebConfig=new Properties();
+            ReportConfig=new Properties();
 
             WebConfig.load(webConfigFile);
             ReportConfig.load(reportConfigFile);
 
         } catch (FileNotFoundException e) {
-            System.out.println("Property file is not found");
+            System.out.println("Property File is not found");
         } catch (IOException e) {
-            System.out.println("File isn't readable");
+            System.out.println("File is not readable");
         }
+
     }
 }
